@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+
+    frontend:
+        container_name: solidity-react-client
+        build:
+            context: .
+            dockerfile: client/Dockerfile
+        volumes:
+            - './client:/app'
+        ports:
+            - 3000:3000
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        command: npm start
+    backend:
+        container_name: solidity-node-server
+        build:
+            context: .
+            dockerfile: server/Dockerfile
+        volumes:
+            - './server:/app'
+        ports:
+            - 8888:8080
+        command: /app/node_modules/nodemon/bin/nodemon.js ./src/app.js -e js,hbs,css

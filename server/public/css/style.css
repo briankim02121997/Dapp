@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    overflow: visible;
+    height: 56px;
+}
+
+.main{
+    padding-top: 60px;
+    min-height: 100%;
+}
+
+footer {
+    position: relative;
+    clear: both;
+    height: 160px;
+    margin-top: -160px;
+}
