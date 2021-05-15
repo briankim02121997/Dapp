@@ -7,26 +7,21 @@ import {deliveryManager} from "../configs/ownerAddress";
 const ItemDetail = ({item, currentUserAddress, delivery}) => {
 
     const renderHelper = () => {
-        console.log(item._state)
-        if(deliveryManager && currentUserAddress && currentUserAddress.toLowerCase() === deliveryManager.toLowerCase()){
-            return (
-                <div className="right floated content">
-                    { item._state == 1 ? <button onClick={() => delivery(item._itemIndex)} className="ui inverted red button">
-                        Delivery
-                    </button> : null}
-                    { item._state == 0 ? <Link to={`/payment/${item._itemIndex}`} className="ui inverted green button">
-                        Payment
-                    </Link> : null}
-                </div>
-                );
-        }
-        return item._state == 0 ? (
+
+        return (
             <div className="right floated content">
-                <Link to={`/payment/${item._itemIndex}`} className="ui inverted green button">
-                    Payment
-                </Link>   
+                { item._state == 1 && deliveryManager && currentUserAddress && currentUserAddress.toLowerCase() === deliveryManager.toLowerCase() ? 
+                    <button onClick={() => delivery(item._itemIndex)} className="ui inverted red button">
+                        Delivery
+                    </button> : null
+                }
+                { item._state == 0 ? 
+                    <Link to={`/payment/${item._itemIndex}`} className="ui inverted green button">
+                        Payment
+                    </Link> : null
+                }
             </div>
-        ) : null;
+        );
     };
 
     return (
